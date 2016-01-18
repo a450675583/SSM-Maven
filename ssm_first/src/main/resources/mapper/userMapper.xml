@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.elgin.dao.UserDao">
+    
+    
+    <!-- 新增一条记录 -->
+    <insert id="addUser" parameterType="User">
+      insert into t_user(username,password,email,phone)values(#{username},#{password},#{email},#{phone})
+    </insert>
+    
+    <!-- 删除一条记录 -->
+    <delete id="deleteUser" parameterType="Integer">
+      delete from t_user where id = #{id}
+    </delete>
+    
+    <!-- 更新一条记录的数据 -->
+    <update id="updateUser" parameterType="User">
+      update t_user set username=#{username},password=#{password},email=#{email},phone=#{phone} where id=#{id}
+    </update>
+    
+    <!-- 查询单条记录 -->
+    <select id="getUser" parameterType="Integer" resultType="User">
+        SELECT * FROM t_user WHERE id = #{id}
+    </select>
+    
+    <!-- 查询多条记录 -->
+    <select id="getUserList" resultType="User">
+       select * from t_user
+    </select>
+
+</mapper>

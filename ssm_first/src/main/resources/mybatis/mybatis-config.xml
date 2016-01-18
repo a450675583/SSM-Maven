@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+<!-- 类的别名 -->
+<typeAliases>
+  <typeAlias type="com.elgin.entities.User" alias="User"/>
+</typeAliases>
+
+<!-- 映射文件与接口绑定 -->
+<mappers>
+   <mapper class="" resource=""/>
+</mappers>
+</configuration>
