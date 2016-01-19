@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="OFF">
+  <Appenders>
+    <!-- 输出到文件 -->
+    <File name="file" fileName="d:/myapp.log" append="true">
+      <PatternLayout pattern="%d %-5p %c - %m%n"/>
+    </File>
+    
+     <!--输出到控制台配置-->
+    <Console name="Console">
+      <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss } %p %l %m%n" />
+    </Console>
+    
+    <!-- 日志文件定期整理处理 -->
+    <RollingFile name="RollingFile" fileName="logs/app.log"
+                 filePattern="d:/logs/$${date:yyyy-MM}/app-%d{MM-dd-yyyy}-%i.log.gz">
+      <PatternLayout>
+        <Pattern>%d{yyyy-MM-dd HH:mm:ss } %p %l %m%n</Pattern>
+      </PatternLayout>
+      <Policies>
+        <TimeBasedTriggeringPolicy />
+        <SizeBasedTriggeringPolicy size="20MB"/>
+      </Policies>
+    </RollingFile>
+    
+  </Appenders>
+  <Loggers>
+    
+    <Logger level="debug" name="com.elgin" additivity="false">
+       <AppenderRef ref="Console"/>
+       <AppenderRef ref="file" />
+    </Logger>
+    
+    <Root level="warn">
+      <AppenderRef ref="file" />
+      <AppenderRef ref="RollingFile" />
+    </Root>
+  </Loggers>
+</Configuration>

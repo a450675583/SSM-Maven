@@ -7,16 +7,20 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+
 import com.elgin.entities.User;
 import com.elgin.service.UserService;
 
 @Controller
 public class UserController {
-
+  
+	private Logger logger=Logger.getLogger(this.getClass());
+	
 	@Autowired
 	private UserService userService;
 
@@ -29,7 +33,7 @@ public class UserController {
 	*/
 	@RequestMapping("addpage.jhtml")
 	public String addPage(ModelMap mm) {
-		System.out.println("add page...");
+		logger.info("add page...");
 		return "/register";
 	}
 
@@ -49,8 +53,10 @@ public class UserController {
 			result = userService.addUser(user);
 		}
 		if (result > 0) {
+			logger.info("注册成功..");
 			response.sendRedirect("/allUser.jhtml");
 		} else {
+			logger.error("注册失败");
 			request.getRequestDispatcher("/").forward(request, response);
 		}
 	}
@@ -96,11 +102,11 @@ public class UserController {
 	public void updateUser(HttpServletRequest request, HttpServletResponse response, User user) throws Exception {
 		int result = userService.updateUser(user);
 		if (result > 0) {
-
+            logger.info("更新用户数据成功");
 			response.sendRedirect("/allUser.jhtml");
 
 		} else {
-
+            logger.error("更新用户数据失败");
 			request.getRequestDispatcher("/").forward(request, response);
 
 		}
@@ -118,11 +124,11 @@ public class UserController {
 	public void deleteUserById(HttpServletRequest request, HttpServletResponse response, String id) throws Exception {
 		int result = userService.deleteUser(Integer.parseInt(id));
 		if (result > 0) {
-
+            logger.info("删除用户数据成功..");
 			response.sendRedirect("/allUser.jhtml");
 
 		} else {
-
+            logger.error("删除用户数据失败..");
 			request.getRequestDispatcher("/").forward(request, response);
 
 		}
