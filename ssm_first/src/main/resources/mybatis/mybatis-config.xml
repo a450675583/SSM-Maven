@@ -6,9 +6,4 @@
 <typeAliases>
   <typeAlias type="com.elgin.entities.User" alias="User"/>
 </typeAliases>
-
-<!-- 映射文件与接口绑定 -->
-<mappers>
-   <mapper class="" resource=""/>
-</mappers>
 </configuration>
