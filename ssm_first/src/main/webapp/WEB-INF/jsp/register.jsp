@@ -32,8 +32,7 @@
                    <td><input type="text" name="phone" value="${user.phone}"></td>
                </tr>
                <tr>
-                   <td colspan="2"></td>
-                   <td><input type="submit" value="提交"></td>
+                   <td colspan="2" align="center"><input type="submit" value="提交"></td>
                </tr>
             </table>
     </form>

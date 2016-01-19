@@ -57,7 +57,7 @@ public class UserController {
 			response.sendRedirect("/allUser.jhtml");
 		} else {
 			logger.error("注册失败");
-			request.getRequestDispatcher("/").forward(request, response);
+			request.getRequestDispatcher("/500.jhtml").forward(request, response);
 		}
 	}
 
@@ -107,7 +107,7 @@ public class UserController {
 
 		} else {
             logger.error("更新用户数据失败");
-			request.getRequestDispatcher("/").forward(request, response);
+			request.getRequestDispatcher("/500.jhtml").forward(request, response);
 
 		}
 	}
@@ -129,7 +129,7 @@ public class UserController {
 
 		} else {
             logger.error("删除用户数据失败..");
-			request.getRequestDispatcher("/").forward(request, response);
+			request.getRequestDispatcher("/500.jhtml").forward(request, response);
 
 		}
 	}
